@@ -242,6 +242,7 @@ class Storage {
         meals.forEach(meal => {
             if(meal.id === id){
                 meals.splice(meals.indexOf(meal), 1)
+                localStorage.setItem('totalCalories', localStorage.getItem('totalCalories')- meal.calories);  
             }
         });
         localStorage.setItem('meals', JSON.stringify(meals))
@@ -251,6 +252,7 @@ class Storage {
         workouts.forEach(workout => {
             if(workout.id === id){
                 workouts.splice(workouts.indexOf(workout), 1)
+                localStorage.setItem('totalCalories', Number(localStorage.getItem('totalCalories')) + Number(workout.calories));  
             }
         });
         localStorage.setItem('workouts', JSON.stringify(workouts))
